@@ -1,0 +1,70 @@
+<!-- HARD TYPE No use in real-work -->
+<!DOCTYPE html>
+<html lang="en">
+    <body>
+        <div id="root"></div>
+    </body>
+    <!-- REACT: to create element -->
+    <!-- REACT_DOM: get react elements to change html -->
+    <script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
+    
+    <!-- BABEL -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    
+    <script type="text/babel">
+        // NO USE of createElement in code industry just for understanding
+        // USE JSX
+        const root = document.getElementById("root");
+
+        // const span = React.createElement(
+        //     "span", 
+        //     {
+        //         id:"basic span",
+        //         style: {color: "blue"},
+        //         onMouseEnter:() => console.log('mouse enter'),
+        //     }, 
+        //     "Hello span tag"
+        //     );
+        const Span = () => (
+            <span 
+                id="basic span"
+                style={
+                    {color: "blue",
+                    backgroundColor: "beige"
+                }
+                } onMouseEnter={() => console.log("mouse enter")}>
+                Hello span tag
+            </span>
+            );
+
+        // const btn = React.createElement(
+        //     "button", 
+        //     {
+        //         style: {backgroundColor: "tomato"},
+        //         onClick:() => console.log('clicked btn'),
+        //     }, 
+        //     "Click Me"
+        //     );
+        function Btn() {
+            return(
+            <button 
+                style={
+                    {backgroundColor: "tomato",
+                    color: "yellow",}
+                }
+                onClick={() => console.log("clicked btn")}
+            >
+                Click Me
+            </button>
+            );
+        }
+
+        // const container = React.createElement("div", null, [span, btn])
+        const container = <div> <button>None</button> <Span /> <Btn /> </div>
+        // ※Caution
+        // The first letter of my own component should be capital.
+        // If not(in case of lower), React and JSX will think it as html tag.
+        ReactDOM.render(container, root);
+    </script>
+</html>
