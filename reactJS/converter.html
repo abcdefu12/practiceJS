@@ -16,42 +16,65 @@
     <script type="text/babel">
             
         const root = document.getElementById("root");
-
+        
         
         function App () {
+            const [index, setIndex] = React.useState("-1");
+            const onSelect = (event) => {
+                setIndex(event.target.value);
+            };
+                        
+            return(
+                <div>
+                    <h1 className="title">Super Converter</h1>
+                    <select name="" id="" onChange={onSelect} value={index}>
+                        <option value="-1">Select Units</option>
+                        <option value="0">Minutes & Hours</option>
+                        <option value="1">Km & Miles</option>
+                        <option value="2">Kg & Pounds</option>
+                    </select>
+                    <hr />
+                    {index === "-1" ? "Please select your units" : null}
+                    {index === "0" ? <MinutesToHours /> : null}
+                    {index === "1" ? <KmToMiles /> : null}
+                    {index === "2" ? <KgToLbs /> : null}
+                </div>
+            );
+        };
+        
+        function MinutesToHours () {
             const [amount, setAmount] = React.useState();
-            const [flipped, setFlipped] = React.useState(false);
+            const [invert, setInvert] = React.useState(false);
             const minUpdate = (event)=>{
                 setAmount(event.target.value);
             };
             const onReset = () => setAmount(0);
             const onFlip = () => {
                 onReset();
-                setFlipped((flipped) => !flipped)
+                setInvert((invert) => !invert)
             };
             
             return(
                 <div>
-                    <h1 className="title">Super Converter</h1>
                     <div>
                         <label htmlFor="minutes">minutes</label>
                         <input 
-                            value={flipped ? amount*60 : amount} 
+                            value={invert ? amount*60 : amount} 
                             id="Minutes" 
                             placeHolder="Minutes" 
                             type = "number"
-                            disabled = {flipped}
+                            disabled = {invert}
                             onChange={minUpdate}
                         />
                     </div>
                     <div>
                         <label htmlFor="hours">hours</label>
                         <input 
-                            value={flipped ? amount : Math.round(amount/60) }
+                            value={invert ? amount : Math.round(amount/60) }
                             id="Hours" 
                             placeHolder="Hours" 
                             type = "number"
-                            disabled={!flipped}
+                            disabled={!invert}
                             onChange={minUpdate}
                         />
                     </div>
@@ -61,7 +84,56 @@
                 </div>
             );
         };
-            
+
+        function KmToMiles(){
+            return(
+                <div></div>
+                
+            );
+        };
+
+        function KgToLbs () {
+            const [amount, setAmount] = React.useState();
+            const [invert, setInvert] = React.useState(false);
+            const amountUpdate = (event) => {
+                setAmount(event.target.value);
+            };
+            const onReset = () => setAmount(0);
+            const onInvert = () => {
+                onReset();
+                setInvert((current) => !current)
+            };
+            return(
+                <div>
+                    <div>
+                        <label htmlFor="kg">Kg</label>
+                        <input 
+                            value ={invert ? amount/2.20462 : amount}
+                            id = "kg"
+                            placeHolder = "kg"
+                            type="number"
+                            disabled = {invert}
+                            onChange = {amountUpdate}
+                        />
+                    </div>
+                    <div>
+                        <label htmlFor="lbs">lbs</label>
+                        <input 
+                            value ={invert ? amount : amount*2.20462 }
+                            id = "lbs"
+                            placeHolder = "lbs"
+                            type="number"
+                            disabled = {!invert}
+                            onChange = {amountUpdate}
+                        />
+                    </div>
+                    <button onClick={onReset}>Reset</button>
+                    <button onClick={onInvert}>Invert</button>
+                    </div>
+
+            );
+        };
+
         ReactDOM.render(<App />, root);
     </script>
 
