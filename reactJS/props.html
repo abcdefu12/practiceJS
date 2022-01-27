@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <body>
+        <div id="root"></div>
+    </body>
+    
+    <!-- REACT -->
+    <script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
+    <!-- PROPS TYPE -->
+    <!-- <script src="https://unpkg.com/react@17.0.2/umd/react.development.js "></script> -->
+    <script type="module" src="https://unpkg.com/prop-types@15.7.2/prop-types.min.js"></script>
+
+    <!-- BABEL -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    
+    <!-- SCRIPT -->
+    <script type="text/babel">
+            
+        const root = document.getElementById("root");
+        
+        function Btn({id, onClick, fontSize = 16}){
+            return(
+                <button
+                    style={{
+                        backgroundColor: "tomato",
+                        color: " white",
+                        padding: "10px 20px",
+                        border: 0,
+                        borderRadius: 10,
+                        fontSize,                      
+                    }}
+                    onClick={onClick} 
+                >{id}</button>
+            );
+        };
+
+        // MEMO rerender when change occured only
+        // const MemorizedBtn = React.memo(Btn);
+        // <MemorizedBtn />
+
+        // Props Type
+        Btn.propTypes = {
+            // id: PropTypes.string.isRequired,
+            index: PropTypes.string,
+            fontsize: PropTypes.number.isRequired,
+        };
+
+        function App () {
+            const [value, setValue] = React.useState("save changes");
+            const changeValue = () => setValue("revert changes");
+
+            return(
+                <div>
+                    <Btn id={value} index="0" onClick={changeValue} fontSize={20}/>
+                    <Btn id="continue" index="1"/>
+                </div>
+            );
+        };
+        
+        
+        ReactDOM.render(<App />, root);
+    </script>
+
+
+</html>
