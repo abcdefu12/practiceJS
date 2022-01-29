@@ -14,7 +14,7 @@ function App() {
     <div>
       <Router>
         <Switch>
-          <Route path="/movie">
+          <Route path="/movie/:id">
             <Detail />
           </Route>
 
