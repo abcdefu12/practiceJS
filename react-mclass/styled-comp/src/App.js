@@ -3,29 +3,29 @@ import styled from "styled-components";
 //def
 const Father = styled.div`
   display: flex;
-`
-const BoxOne = styled.div`
-  background-color: teal;
+`;
+const Box = styled.div`
+  background-color: ${(props) => props.bgColor};
   width: 100px;
   height: 100px;
 `;
-const BoxTwo = styled.div`
-  background-color: tomato;
-  width: 100px;
-  height: 100px;
-`;
+
 const Text = styled.span`
   color: white;
+`;
+const Circle = styled(Box)`
+  border-radius: 50px;
 `;
 
 //imp
 function App() {
   return(
     <Father>
-      <BoxOne>
+      <Box bgColor="teal">
         <Text>HELLO</Text>
-      </BoxOne>
-      <BoxTwo />
+      </Box>
+      <Circle bgColor="whitesmoke" />
+      <Box bgColor="tomato" />
     </Father>
   );
 }
