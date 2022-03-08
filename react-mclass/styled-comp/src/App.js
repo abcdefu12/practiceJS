@@ -3,6 +3,9 @@ import styled, { keyframes } from "styled-components";
 //def
 const Father = styled.div`
   display: flex;
+  background: ${(props) => props.theme.backgroundColor};
+  height: 100vh;
+  width: 100vw;
 `;
 const rotateAnim = keyframes`
   /* from{
@@ -47,7 +50,8 @@ const Box = styled.div`
   }
 `;
 const Text = styled.span`
-  color: white;
+  /* color: white; */
+  color: ${(props) => props.theme.textColor};
 `;
 const Circle = styled(Box)`
   border-radius: 50px;
@@ -60,12 +64,17 @@ const Btn = styled.button`
 `;
 const Input = styled.input.attrs({ required: true, minLength: 5 })`
   background-color: blueviolet;
+  height: 100px;
+`;
+const Title = styled.h1`
+  color: ${(props) => props.theme.textColor};
 `;
 
 //imp
 function App() {
   return (
     <Father as="header">
+      <Title>Styled Components</Title>
       <Box bgColor="teal">
         <Text>HELLO</Text>
       </Box>
