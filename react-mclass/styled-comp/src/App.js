@@ -25,6 +25,9 @@ const rotateAnim = keyframes`
     border-radius: 0px;
   }
 `;
+const Emoji = styled.span`
+  font-size: 36px;
+`;
 const Box = styled.div`
   background-color: ${(props) => props.bgColor};
   width: 100px;
@@ -34,8 +37,7 @@ const Box = styled.div`
   justify-content: center;
   align-items: center;
   /* 이모지 */
-  span {
-    font-size: 36px;
+  ${Emoji} {
     &:hover {
       font-size: 50px;
     }
@@ -69,7 +71,7 @@ function App() {
       </Box>
       <Circle bgColor="whitesmoke" />
       <Box bgColor="tomato">
-        <span>😍</span>
+        <Emoji as="p">😍</Emoji>
       </Box>
       <Btn>Log in</Btn>
       <Btn as="a" href="/">
