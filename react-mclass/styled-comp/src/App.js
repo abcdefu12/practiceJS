@@ -33,8 +33,15 @@ const Box = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  /* 이모지 */
   span {
     font-size: 36px;
+    &:hover {
+      font-size: 50px;
+    }
+    &:active {
+      opacity: 0;
+    }
   }
 `;
 const Text = styled.span`
