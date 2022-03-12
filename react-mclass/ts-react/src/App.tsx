@@ -17,6 +17,11 @@ function App() {
     event.preventDefault();
     // console.log("hello",value);
   };
+  const onClick = (event:React.FormEvent<HTMLButtonElement>) => {
+    // to specify event there are not typical form, it can be modified anyway.
+    // if button is not inside form, then you can use mouse event instead of form event.
+    event.preventDefault();
+  }
   const H1 = styled.h1`
     color: ${(props)=>props.theme.textColor};
   `;
@@ -30,7 +35,7 @@ function App() {
           type="text" 
           placeholder="username"
         />
-        <button>log in</button>
+        <button onClick={onClick}>log in</button>
       </form>
     </div>
   );
