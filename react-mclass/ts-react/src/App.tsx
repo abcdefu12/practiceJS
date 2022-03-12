@@ -17,8 +17,12 @@ function App() {
     event.preventDefault();
     // console.log("hello",value);
   };
+  const H1 = styled.h1`
+    color: ${(props)=>props.theme.textColor};
+  `;
   return (
     <div>
+      <H1>Subject</H1>
       <form onSubmit={onSubmit}>
         <input 
           value={value}
